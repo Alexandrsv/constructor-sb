@@ -1,19 +1,27 @@
 import React, { FC } from "react";
 import PlusIcon from "@/components/icons/PlusIcon";
 import { Card, IconButton } from "@material-tailwind/react";
-import EditOrCreateBanner from "@/components/EditOrCreateBanner";
 import Sidebar from "@/components/Sidebar";
+import SidebarEditor from "@/components/SidebarEditors/SidebarEditor";
+import { BlockType } from "@/hooks/useBlocks";
 
 const CreateBlockPanel: FC<{ onClick?: VoidFunction }> = ({ onClick }) => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
-  const onOpenSidebar = () => {
+  const [newBlockType, setNewBlockType] = React.useState<BlockType>("banner");
+
+  const onOpenSidebar = (blockType: BlockType) => {
     setIsSidebarOpen(true);
+    setNewBlockType(blockType);
     onClick?.();
+  };
+
+  const onCloseSidebar = () => {
+    setIsSidebarOpen(false);
   };
   return (
     <>
       <Card className={"my-4 h-24 flex items-center justify-center"}>
-        <IconButton color={"gray"} onClick={onOpenSidebar}>
+        <IconButton color={"gray"} onClick={() => onOpenSidebar("banner")}>
           <PlusIcon />
         </IconButton>
       </Card>
@@ -23,7 +31,10 @@ const CreateBlockPanel: FC<{ onClick?: VoidFunction }> = ({ onClick }) => {
         }}
         isOpen={isSidebarOpen}
       >
-        <EditOrCreateBanner />
+        <SidebarEditor
+          onCloseSidebar={onCloseSidebar}
+          newBlockType={newBlockType}
+        />
       </Sidebar>
     </>
   );

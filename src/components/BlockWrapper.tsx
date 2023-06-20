@@ -1,14 +1,14 @@
 import React, { FC, ReactNode } from "react";
 import EditBtn from "@/components/EditBtn";
-import EditOrCreateBanner from "@/components/EditOrCreateBanner";
 import Sidebar from "@/components/Sidebar";
+import SidebarEditor from "@/components/SidebarEditors/SidebarEditor";
 
-const Block: FC<{ children: ReactNode; onEdit: VoidFunction }> = ({
-  children,
-  onEdit,
-}) => {
+const BlockWrapper: FC<{
+  children: ReactNode;
+  onEdit: VoidFunction;
+  blockId: string;
+}> = ({ children, onEdit, blockId }) => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
-
   const onOpenSidebar = () => {
     setIsSidebarOpen(true);
   };
@@ -28,10 +28,10 @@ const Block: FC<{ children: ReactNode; onEdit: VoidFunction }> = ({
         </div>
       </div>
       <Sidebar onClose={onCloseSidebar} isOpen={isSidebarOpen}>
-        <EditOrCreateBanner />
+        <SidebarEditor blockId={blockId} onCloseSidebar={onCloseSidebar} />
       </Sidebar>
     </>
   );
 };
 
-export default Block;
+export default BlockWrapper;

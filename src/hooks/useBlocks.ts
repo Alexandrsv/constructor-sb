@@ -1,12 +1,16 @@
 import useSWR from "swr";
 import { usePage } from "@/hooks/usePage";
 
-export interface IBlock {
+export interface IBanner {
   id: string;
   imageUrl: string;
   title: string;
+  type: "banner" | "card" | "text";
   description: string;
 }
+export type BlockType = "banner" | "slider" | "image";
+
+export type IBlock = IBanner;
 
 const getBlocksFromLocalStorage = () => {
   const blocks = localStorage.getItem("blockData");
@@ -35,7 +39,7 @@ export const useBlocks = () => {
       return;
     }
 
-    saveBlocksToLocalStorage([...blocks, ...newBlocks]);
+    saveBlocksToLocalStorage(newBlocks);
     void mutateBlocks();
   };
 
@@ -47,6 +51,20 @@ export const useBlocks = () => {
     addBlockToPage(block.id);
   };
 
+  const updateBlock = (newBlock: IBlock) => {
+    if (!blocks) {
+      return;
+    }
+    const newBlocks = [...blocks];
+    newBlocks.splice(
+      blocks.findIndex((b) => b.id === newBlock.id),
+      1,
+      newBlock
+    );
+
+    setBlocks(newBlocks);
+  };
+
   const removeBlock = (blockId: string) => {
     if (!blocks) {
       return;
@@ -54,5 +72,5 @@ export const useBlocks = () => {
     setBlocks(blocks.filter((block) => block.id !== blockId));
     removeBlockFromPage(blockId);
   };
-  return { blocks, addBlock, removeBlock };
+  return { blocks, addBlock, removeBlock, updateBlock };
 };
