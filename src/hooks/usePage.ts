@@ -42,7 +42,7 @@ export const usePage = () => {
     void mutatePageData();
   };
 
-  const addBlock = (blockId: string) => {
+  const addBlockToPage = (blockId: string) => {
     if (!pageData) {
       return;
     }
@@ -50,7 +50,7 @@ export const usePage = () => {
       blocksIds: [...pageData.blocksIds, blockId],
     });
   };
-  const removeBlock = (blockId: string) => {
+  const removeBlockFromPage = (blockId: string) => {
     if (!pageData) {
       return;
     }
@@ -59,5 +59,5 @@ export const usePage = () => {
     });
   };
 
-  return { pageData, setPageData, addBlock, removeBlock };
+  return { pageData, setPageData, addBlockToPage, removeBlockFromPage };
 };
