@@ -33,7 +33,7 @@ const ChooseBannerEditor: FC<{ onCloseSidebar: VoidFunction }> = ({
   };
 
   return (
-    <div>
+    <div className={isSidebarOpen ? "hidden" : ""}>
       <div className={"px-4 grid justify-start gap-2 pb-5"}>
         <Typography color="blueGray" size="lg">
           Choose banner
@@ -56,6 +56,7 @@ const ChooseBannerEditor: FC<{ onCloseSidebar: VoidFunction }> = ({
           setIsSidebarOpen(false);
         }}
         isOpen={isSidebarOpen}
+        isOverlayHidden={true}
       >
         <SidebarEditor
           onCloseSidebar={onCloseNewBannerSidebar}

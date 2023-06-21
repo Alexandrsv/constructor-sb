@@ -4,10 +4,16 @@ import ReactDOM from "react-dom";
 interface DrawerProps {
   children: ReactNode;
   isOpen: boolean;
+  isOverlayHidden?: boolean;
   onClose: () => void;
 }
 
-const Sidebar: FC<DrawerProps> = ({ children, isOpen, onClose }) => {
+const Sidebar: FC<DrawerProps> = ({
+  children,
+  isOpen,
+  onClose,
+  isOverlayHidden,
+}) => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [drawerRoot, setDrawerRoot] = useState<Element | null>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -47,7 +53,9 @@ const Sidebar: FC<DrawerProps> = ({ children, isOpen, onClose }) => {
       className={`fixed inset-0 z-50 flex justify-end`}
       onClick={handleClickOverlay}
     >
-      <div className="fixed inset-0 bg-black opacity-50" />
+      {!isOverlayHidden && (
+        <div className={`fixed inset-0 bg-black opacity-50`} />
+      )}
       <div
         className={`fixed top-0 right-0 w-auto h-full bg-white shadow-2xl transition-transform duration-300 ease-in-out ${
           isAnimated ? "translate-x-0" : "translate-x-full"
