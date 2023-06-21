@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import { useBlock } from "@/hooks/useBlock";
 import BannerEditor from "@/components/SidebarEditors/Banner/BannerEditor";
-import { BlockType } from "@/hooks/useBlocks";
+import { BlockType } from "@/hooks/usePage";
+import { useBanner } from "@/hooks/useBanner";
 
 // Занимается маршрутизацией содержимого сайдбара
 
@@ -22,9 +22,9 @@ const SidebarEditor: FC<SidebarEditorCreateProps | SidebarEditorEditProps> = ({
   blockId,
   newBlockType,
 }) => {
-  const { block } = useBlock(blockId);
+  const { banner } = useBanner(blockId);
 
-  console.log({ block });
+  console.log({ block: banner });
   return (
     <div>
       {newBlockType && (
@@ -37,8 +37,8 @@ const SidebarEditor: FC<SidebarEditorCreateProps | SidebarEditorEditProps> = ({
 
       {!newBlockType && (
         <>
-          {block?.type === "banner" && (
-            <BannerEditor banner={block} onCloseSidebar={onCloseSidebar} />
+          {banner?.type === "banner" && (
+            <BannerEditor banner={banner} onCloseSidebar={onCloseSidebar} />
           )}
         </>
       )}

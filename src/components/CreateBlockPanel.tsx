@@ -3,7 +3,7 @@ import PlusIcon from "@/components/icons/PlusIcon";
 import { Card, IconButton } from "@material-tailwind/react";
 import Sidebar from "@/components/Sidebar";
 import SidebarEditor from "@/components/SidebarEditors/SidebarEditor";
-import { BlockType } from "@/hooks/useBlocks";
+import { BlockType } from "@/hooks/usePage";
 
 const CreateBlockPanel: FC<{ onClick?: VoidFunction }> = ({ onClick }) => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);

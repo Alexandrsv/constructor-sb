@@ -6,7 +6,8 @@ import {
   Textarea,
   Typography,
 } from "@material-tailwind/react";
-import { IBanner, useBlocks } from "@/hooks/useBlocks";
+import { IBanner } from "@/api/banner";
+import { useBanner } from "@/hooks/useBanner";
 
 const BannerEditor: FC<{
   banner?: IBanner;
@@ -17,13 +18,13 @@ const BannerEditor: FC<{
   const [description, setDescription] = useState(banner?.description ?? "");
 
   const [isOpenSecondDrawer, setIsOpenSecondDrawer] = useState(false);
-  const { addBlock, updateBlock } = useBlocks();
+  const { addBanner, updateBanner } = useBanner(banner?.id);
   const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     console.log("submit", banner);
     if (!banner?.id) {
       const randomString = Math.random().toString(36).substring(10);
-      addBlock({
+      addBanner({
         id: randomString,
         title,
         description,
@@ -32,7 +33,7 @@ const BannerEditor: FC<{
           "https://storage.googleapis.com/pai-images/2d5349f18f124114aba5d8cc2efd8dda.jpeg",
       });
     } else {
-      updateBlock({
+      updateBanner({
         id: banner.id,
         title,
         description,

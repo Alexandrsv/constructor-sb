@@ -1,15 +1,22 @@
 import useSWR from "swr";
 
+export type BlockType = "banner" | "slider" | "image";
+
+interface IPageBlock {
+  id: string;
+  type: BlockType;
+}
+
 interface PageData {
   id: string;
   title: string;
-  blocksIds: string[];
+  blocks: IPageBlock[];
 }
 
 const initialPageData: PageData = {
   id: "1",
   title: "Страница 1",
-  blocksIds: [],
+  blocks: [],
 };
 
 const getPageDataFromLocalStorage = () => {
@@ -42,12 +49,12 @@ export const usePage = () => {
     void mutatePageData();
   };
 
-  const addBlockToPage = (blockId: string) => {
+  const addBlockToPage = (block: IPageBlock) => {
     if (!pageData) {
       return;
     }
     setPageData({
-      blocksIds: [...pageData.blocksIds, blockId],
+      blocks: [...pageData.blocks, block],
     });
   };
   const removeBlockFromPage = (blockId: string) => {
@@ -55,7 +62,7 @@ export const usePage = () => {
       return;
     }
     setPageData({
-      blocksIds: pageData.blocksIds.filter((id) => id !== blockId),
+      blocks: pageData.blocks.filter((block) => block.id !== blockId),
     });
   };
 

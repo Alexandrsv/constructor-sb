@@ -2,11 +2,11 @@ import React from "react";
 import Banner from "@/components/Banner";
 import BlockWrapper from "@/components/BlockWrapper";
 import CreateBlockPanel from "@/components/CreateBlockPanel";
-import { useBlocks } from "@/hooks/useBlocks";
 import { Button } from "@material-tailwind/react";
+import { usePage } from "@/hooks/usePage";
 
 const MainPage = () => {
-  const { blocks } = useBlocks();
+  const { pageData } = usePage();
   const clearStorage = () => {
     localStorage.clear();
     window.location.reload();
@@ -17,9 +17,9 @@ const MainPage = () => {
         <div className={"flex justify-center py-4"}>
           <Button onClick={clearStorage}>Clear Storage</Button>
         </div>
-        {blocks.map((block) => (
+        {pageData.blocks?.map((block) => (
           <BlockWrapper key={block.id} onEdit={() => {}} blockId={block.id}>
-            <Banner id={block.id} />
+            {block.type === "banner" && <Banner id={block.id} />}
           </BlockWrapper>
         ))}
         <CreateBlockPanel />
