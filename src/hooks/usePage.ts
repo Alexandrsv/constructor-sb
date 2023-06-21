@@ -1,36 +1,11 @@
 import useSWR from "swr";
-
-export type BlockType = "banner" | "slider" | "image";
-
-interface IPageBlock {
-  id: string;
-  type: BlockType;
-}
-
-interface PageData {
-  id: string;
-  title: string;
-  blocks: IPageBlock[];
-}
-
-const initialPageData: PageData = {
-  id: "1",
-  title: "Страница 1",
-  blocks: [],
-};
-
-const getPageDataFromLocalStorage = () => {
-  const pageData = localStorage.getItem("pageData");
-  if (pageData) {
-    return JSON.parse(pageData) as PageData;
-  } else {
-    return initialPageData;
-  }
-};
-
-const savePageDataToLocalStorage = (pageData: PageData) => {
-  localStorage.setItem("pageData", JSON.stringify(pageData));
-};
+import {
+  getPageDataFromLocalStorage,
+  initialPageData,
+  IPageBlock,
+  PageData,
+  savePageDataToLocalStorage,
+} from "@/api/page";
 
 export const usePage = () => {
   const { data: pageData, mutate: mutatePageData } = useSWR(
