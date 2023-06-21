@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { IBanner } from "@/api/banner";
-import { useBanner } from "@/hooks/useBanner";
+import { useBanner } from "@/components/Blocks/Banner/useBanner";
 
 const BannerEditor: FC<{
   banner?: IBanner;
@@ -17,7 +17,6 @@ const BannerEditor: FC<{
   const [title, setTitle] = useState(banner?.title ?? "");
   const [description, setDescription] = useState(banner?.description ?? "");
 
-  const [isOpenSecondDrawer, setIsOpenSecondDrawer] = useState(false);
   const { addBanner, updateBanner } = useBanner(banner?.id);
   const onSubmit: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();

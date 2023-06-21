@@ -1,4 +1,4 @@
-import { useBanners } from "@/hooks/useBanners";
+import { useBanners } from "@/components/Blocks/Banner/useBanners";
 
 export const useBanner = (bannerId?: string) => {
   const { banners, updateBanner, removeBanner, addBanner } = useBanners();

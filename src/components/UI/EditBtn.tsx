@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { IconButton } from "@material-tailwind/react";
-import EditIcon from "@/components/icons/EditIcon";
+import EditIcon from "@/components/UI/Icons/EditIcon";
 
 const EditBtn: FC<{ onClick: VoidFunction; className?: string }> = ({
   onClick,

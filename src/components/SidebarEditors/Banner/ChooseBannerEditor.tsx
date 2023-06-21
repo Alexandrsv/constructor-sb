@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
-import Banner from "@/components/Banner";
-import { useBanners } from "@/hooks/useBanners";
+import Banner from "@/components/Blocks/Banner/Banner";
+import { useBanners } from "@/components/Blocks/Banner/useBanners";
 import { Button, Typography } from "@material-tailwind/react";
 import SidebarEditor from "@/components/SidebarEditors/SidebarEditor";
 import Sidebar from "@/components/Sidebar";

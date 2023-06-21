@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { FC, ReactNode, useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 
 interface DrawerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Sidebar: React.FC<DrawerProps> = ({ children, isOpen, onClose }) => {
+const Sidebar: FC<DrawerProps> = ({ children, isOpen, onClose }) => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const [drawerRoot, setDrawerRoot] = useState<Element | null>(null);
   const [isVisible, setIsVisible] = useState(false);

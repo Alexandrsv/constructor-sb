@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import BannerEditor from "@/components/SidebarEditors/Banner/BannerEditor";
-import { useBanner } from "@/hooks/useBanner";
+import { useBanner } from "@/components/Blocks/Banner/useBanner";
 import { BlockType } from "@/api/page";
 
 // Занимается маршрутизацией содержимого сайдбара

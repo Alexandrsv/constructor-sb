@@ -1,13 +1,13 @@
-import React, { FC } from "react";
-import PlusIcon from "@/components/icons/PlusIcon";
+import React, { FC, useState } from "react";
+import PlusIcon from "@/components/UI/Icons/PlusIcon";
 import { Card, IconButton } from "@material-tailwind/react";
 import Sidebar from "@/components/Sidebar";
 import ChooseBannerEditor from "@/components/SidebarEditors/Banner/ChooseBannerEditor";
 import { BlockType } from "@/api/page";
 
 const CreateBlockPanel: FC<{ onClick?: VoidFunction }> = ({ onClick }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
-  const [newBlockType, setNewBlockType] = React.useState<BlockType>("banner");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [newBlockType, setNewBlockType] = useState<BlockType>("banner");
 
   const onOpenSidebar = (blockType: BlockType) => {
     setIsSidebarOpen(true);

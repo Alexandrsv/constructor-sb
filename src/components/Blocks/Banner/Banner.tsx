@@ -7,7 +7,7 @@ import {
   CardHeader,
   Typography,
 } from "@material-tailwind/react";
-import { useBanner } from "@/hooks/useBanner";
+import { useBanner } from "@/components/Blocks/Banner/useBanner";
 
 const Banner: FC<{
   className?: string;

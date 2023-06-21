@@ -1,6 +1,6 @@
 import React from "react";
-import Banner from "@/components/Banner";
-import BlockWrapper from "@/components/BlockWrapper";
+import Banner from "@/components/Blocks/Banner/Banner";
+import BlockWrapper from "@/components/Blocks/BlockWrapper";
 import CreateBlockPanel from "@/components/CreateBlockPanel";
 import { Button } from "@material-tailwind/react";
 import { usePage } from "@/hooks/usePage";

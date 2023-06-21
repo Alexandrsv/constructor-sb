@@ -1,14 +1,16 @@
-import React, { FC, ReactNode } from "react";
-import EditBtn from "@/components/EditBtn";
+import React, { FC, ReactNode, useState } from "react";
+import EditBtn from "@/components/UI/EditBtn";
 import Sidebar from "@/components/Sidebar";
 import SidebarEditor from "@/components/SidebarEditors/SidebarEditor";
+import { usePage } from "@/hooks/usePage";
 
 const BlockWrapper: FC<{
   children: ReactNode;
   onEdit: VoidFunction;
   blockId: string;
 }> = ({ children, onEdit, blockId }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const onOpenSidebar = () => {
     setIsSidebarOpen(true);
   };
