@@ -31,7 +31,9 @@ const CreateBlockPanel: FC<{ onClick?: VoidFunction }> = ({ onClick }) => {
         }}
         isOpen={isSidebarOpen}
       >
-        <ChooseBannerEditor onCloseSidebar={onCloseSidebar} />
+        {newBlockType === "banner" && (
+          <ChooseBannerEditor onCloseSidebar={onCloseSidebar} />
+        )}
       </Sidebar>
     </>
   );

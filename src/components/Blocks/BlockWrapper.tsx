@@ -3,14 +3,12 @@ import EditBtn from "@/components/UI/EditBtn";
 import Sidebar from "@/components/Sidebar";
 import SidebarEditor from "@/components/SidebarEditors/SidebarEditor";
 import { usePage } from "@/hooks/usePage";
-import RemoveIcon from "@/components/UI/Icons/RemoveIcon";
 import RemoveBtn from "@/components/UI/RemoveBtn";
 
 const BlockWrapper: FC<{
   children: ReactNode;
-  onEdit: VoidFunction;
   blockId: string;
-}> = ({ children, onEdit, blockId }) => {
+}> = ({ children, blockId }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { removeBlockFromPage } = usePage();
 

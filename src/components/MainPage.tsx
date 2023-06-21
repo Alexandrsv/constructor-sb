@@ -19,7 +19,7 @@ const MainPage = () => {
         </div>
         <div className={"grid gap-8"}>
           {pageData.blocks?.map((block) => (
-            <BlockWrapper key={block.id} onEdit={() => {}} blockId={block.id}>
+            <BlockWrapper key={block.id} blockId={block.id}>
               {block.type === "banner" && <Banner id={block.id} />}
             </BlockWrapper>
           ))}

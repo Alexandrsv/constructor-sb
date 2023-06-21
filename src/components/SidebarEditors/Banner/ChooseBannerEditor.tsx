@@ -45,7 +45,7 @@ const ChooseBannerEditor: FC<{ onCloseSidebar: VoidFunction }> = ({
       {banners?.map((banner) => (
         <div
           key={banner.id}
-          className={"scale-75"}
+          className={"scale-75 cursor-pointer"}
           onClick={(e) => onChooseBanner(e, banner.id)}
         >
           <Banner id={banner.id} />
