@@ -17,11 +17,13 @@ const MainPage = () => {
         <div className={"flex justify-center py-4"}>
           <Button onClick={clearStorage}>Clear Storage</Button>
         </div>
-        {pageData.blocks?.map((block) => (
-          <BlockWrapper key={block.id} onEdit={() => {}} blockId={block.id}>
-            {block.type === "banner" && <Banner id={block.id} />}
-          </BlockWrapper>
-        ))}
+        <div className={"grid gap-8"}>
+          {pageData.blocks?.map((block) => (
+            <BlockWrapper key={block.id} onEdit={() => {}} blockId={block.id}>
+              {block.type === "banner" && <Banner id={block.id} />}
+            </BlockWrapper>
+          ))}
+        </div>
         <CreateBlockPanel />
       </div>
     </div>
