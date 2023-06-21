@@ -30,7 +30,10 @@ const SidebarEditor: FC<SidebarEditorCreateProps | SidebarEditorEditProps> = ({
       {newBlockType && (
         <>
           {newBlockType === "banner" && (
-            <BannerEditor onCloseSidebar={onCloseSidebar} />
+            <BannerEditor
+              onCloseSidebar={onCloseSidebar}
+              onCreated={onCloseSidebar}
+            />
           )}
         </>
       )}

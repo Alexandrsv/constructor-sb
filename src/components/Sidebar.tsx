@@ -49,10 +49,7 @@ const Sidebar: FC<DrawerProps> = ({
   }
 
   return ReactDOM.createPortal(
-    <div
-      className={`fixed inset-0 z-50 flex justify-end`}
-      onClick={handleClickOverlay}
-    >
+    <div className={`fixed z-50 flex justify-end`} onClick={handleClickOverlay}>
       {!isOverlayHidden && (
         <div className={`fixed inset-0 bg-black opacity-50`} />
       )}

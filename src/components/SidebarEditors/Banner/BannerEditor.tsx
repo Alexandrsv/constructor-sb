@@ -12,7 +12,8 @@ import { useBanner } from "@/components/Blocks/Banner/useBanner";
 const BannerEditor: FC<{
   banner?: IBanner;
   onCloseSidebar: VoidFunction;
-}> = ({ banner, onCloseSidebar }) => {
+  onCreated?: VoidFunction;
+}> = ({ banner, onCloseSidebar, onCreated }) => {
   const [imageUrl, setImageUrl] = useState(banner?.imageUrl ?? "");
   const [title, setTitle] = useState(banner?.title ?? "");
   const [description, setDescription] = useState(banner?.description ?? "");
@@ -31,6 +32,7 @@ const BannerEditor: FC<{
         imageUrl:
           "https://storage.googleapis.com/pai-images/2d5349f18f124114aba5d8cc2efd8dda.jpeg",
       });
+      onCreated?.();
     } else {
       updateBanner({
         id: banner.id,

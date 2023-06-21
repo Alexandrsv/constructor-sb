@@ -13,9 +13,6 @@ const ChooseBannerEditor: FC<{ onCloseSidebar: VoidFunction }> = ({
   const { banners } = useBanners();
   const { addBlockToPage } = usePage();
 
-  const onCloseNewBannerSidebar = () => {
-    setIsSidebarOpen(false);
-  };
   const onOpenSidebar = () => {
     setIsSidebarOpen(true);
   };
@@ -59,7 +56,10 @@ const ChooseBannerEditor: FC<{ onCloseSidebar: VoidFunction }> = ({
         isOverlayHidden={true}
       >
         <SidebarEditor
-          onCloseSidebar={onCloseNewBannerSidebar}
+          onCloseSidebar={() => {
+            setIsSidebarOpen(false);
+            onCloseSidebar();
+          }}
           newBlockType={"banner"}
         />
       </Sidebar>
